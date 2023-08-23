@@ -45,12 +45,10 @@ while True:
             shutil.copy(src_zip_path, unzip_dir)
             os.chdir(unzip_dir)
             os.system('unzip mad3.zip && clear')
+            os.system('rm -rf mad3.zip')
             os.system('clear')
             print("\033[1;92mĐã sao chép thành công từ điện thoại và tạo thư mục 'nro'.\n")
-        except Exception as e:
-            print("\033[1;91mĐã xảy ra lỗi: {}\n".format(e))
-        
-        continue
+          continue
     elif luachon == '3':
         time.sleep(1)
         # Kiểm tra thư mục đã giải nén
