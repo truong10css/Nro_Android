@@ -21,7 +21,7 @@ while True:
     print("╚═╝░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░")
     
     print("\033[1;96m[1] Kiểm tra và cài đặt OpenJDK 17")
-    print("\033[1;932m[2] Sao chép tệp từ điện thoại vào Termux, giải nén và xóa tệp")
+    print("\033[1;932m[2] Sao chép và giải nén tệp từ điện thoại vào Termux, sau đó xóa thư mục")
     print("\033[1;94m[3] Chạy server")
     print("\033[1;91m[4] Thoát")
     
@@ -43,25 +43,29 @@ while True:
     elif luachon == '2':
         clear_screen()
         time.sleep(1)
-        folder_name = input("\033[1;92mNhập tên thư mục từ điện thoại: ")
-        src_file = os.path.join('/sdcard/Download', folder_name)
+        file_name = input("\033[1;92mNhập tên tệp từ điện thoại (ví dụ: mad3.zip): ")
+        src_file = os.path.join('/sdcard/Download', file_name)
         dest_folder = '/data/data/com.termux/files/home/nro'
         
         try:
-            os.makedirs(dest_folder, exist_ok=True)
-            shutil.copy2(src_file, dest_folder)
-            print("\033[1;92mĐã sao chép thành công từ điện thoại vào Termux.\n")
-            
-            if not os.path.exists(os.path.join(dest_folder, 'dist/nro.jar')):
-                with zipfile.ZipFile(os.path.join(dest_folder, 'mad3.zip'), 'r') as zip_ref:
-                    zip_ref.extractall(dest_folder)
-                    print("\033[1;92mĐã giải nén tệp.\n")
+            if os.path.exists(src_file):
+                os.makedirs(dest_folder, exist_ok=True)
+                shutil.copy2(src_file, os.path.join(dest_folder, file_name))
+                print("\033[1;92mĐã sao chép thành công từ điện thoại vào Termux.\n")
                 
-                os.remove(os.path.join(dest_folder, 'mad3.zip'))
-                print("\033[1;92mĐã xóa tệp sau khi giải nén.\n")
-            else:
-                print("\033[1;91mThư mục đã giải nén tồn tại.\n")
+                if not os.path.exists(os.path.join(dest_folder, 'dist/nro.jar')):
+                    with zipfile.ZipFile(os.path.join(dest_folder, file_name), 'r') as zip_ref:
+                        zip_ref.extractall(dest_folder)
+                        print("\033[1;92mĐã giải nén tệp.\n")
+                    
+                    os.remove(os.path.join(dest_folder, file_name))
+                    print("\033[1;92mĐã xóa tệp sau khi giải nén.\n")
+                else:
+                    print("\033[1;91mThư mục đã giải nén tồn tại.\n")
             
+            else:
+                print("\033[1;91mTệp từ điện thoại không tồn tại.\n")
+        
         except Exception as e:
             print("\033[1;91mĐã xảy ra lỗi: {}\n".format(e))
         
@@ -70,9 +74,9 @@ while True:
     elif luachon == '3':
         clear_screen()
         time.sleep(1)
-        if os.path.exists('/data/data/com.termux/files/home/nro/dist/mad.jar'):
+        if os.path.exists('/data/data/com.termux/files/home/nro/dist/nro.jar'):
             print("\033[1;35mĐang khởi động máy chủ...")
-            os.system('java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/mad.jar')
+            os.system('java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/nro.jar')
         else:
             print("\033[1;91mThư mục 'nro' chưa được giải nén. Vui lòng thực hiện bước 2 trước.\n")
         
