@@ -1,5 +1,6 @@
 import base64
 import os
+import shutil
 import time
 
 print(base64.b64decode('LS0tLS1Ub29sIEVuY29kZSBCeSBNWFQtLS0tLQ==').decode())
@@ -14,21 +15,34 @@ while True:
     print("██║░╚═╝░██║░╚═██╔═╝░░░░██║░░░")
     print("╚═╝░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░")
     
-    print("\033[1;96m[1] Thiết lập")
-    print("\033[1;932m[2] Chạy máy chủ")
+    print("\033[1;96m[1] Cài đặt OpenJDK 17")
+    print("\033[1;932m[2] Sao chép tệp từ điện thoại và tạo thư mục 'nro'")
+    print("\033[1;91m[3] Thoát")
+    
     luachon = input("\033[1;92mLựa chọn: ")
     
     if luachon == '1':
         time.sleep(1)
-        os.system('pkg install openjdk-17 -y -y && wget -O src.zip  https://github.com/KhanhNguyen9872/Nro-Offline_src/blob/main/src.zip?raw=true && unzip src.zip && clear ')
-        os.system('rm -rf src.zip')
-        os.system('clear')
+        os.system('pkg install openjdk-17 -y -y')
         time.sleep(1)
+        os.system('clear')
+        print("\033[1;92mCài đặt OpenJDK 17 thành công.\n")
         continue
     elif luachon == '2':
         time.sleep(1)
-        print("\033[1;35mĐang khởi động máy chủ...")
-        os.system('java -Xms2G  -Xmx2G -jar dist/mad.jar')
+        src_file = 'sdcard/Download/mad3.zip'
+        dest_folder = '/data/data/com.termux/files/home/nro'
+        
+        try:
+            os.makedirs(dest_folder, exist_ok=True)
+            shutil.copy2(src_file, dest_folder)
+            print("\033[1;92mĐã sao chép thành công từ điện thoại và tạo thư mục 'nro'.\n")
+        except Exception as e:
+            print("\033[1;91mĐã xảy ra lỗi: {}\n".format(e))
+        
+        continue
+    elif luachon == '3':
+        print("\033[1;91mĐã thoát chương trình.")
         break
     else:
         print("\033[1;91mLựa chọn không hợp lệ. Vui lòng chọn lại.")
