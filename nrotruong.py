@@ -30,14 +30,15 @@ if luachon == '1':
         clear_screen()
         # Kiểm tra và cài đặt OpenJDK 17
         result = os.system('java -version 2>&1 | grep "openjdk version" | grep "17"')
-        if result == 0:
-        print("\033[1;92mOpenJDK 17 đã được cài đặt.\n")
-        else:
-        os.system('pkg install openjdk-17 -y -y')
-         print("\033[1;92mCài đặt OpenJDK 17 thành công.\n")
-        
-        input("\033[1;92mNhấn Enter để tiếp tục...")
-        continue
+if result == 0:
+    print("\033[1;92mOpenJDK 17 đã được cài đặt.\n")
+else:
+    os.system('pkg install openjdk-17 -y -y')
+    print("\033[1;92mCài đặt OpenJDK 17 thành công.\n")
+    
+    input("\033[1;92mNhấn Enter để tiếp tục...")
+continue
+
 elif luachon == '2':
         clear_screen()
         time.sleep(1)
