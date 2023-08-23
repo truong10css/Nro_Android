@@ -43,7 +43,8 @@ while True:
     elif luachon == '2':
         clear_screen()
         time.sleep(1)
-        src_file = '/storage/emulated/0/Download/mad3.zip'
+        folder_name = input("\033[1;92mNhập tên thư mục từ điện thoại: ")
+        src_file = os.path.join('/sdcard/Download', folder_name)
         dest_folder = '/data/data/com.termux/files/home/nro'
         
         try:
@@ -51,7 +52,7 @@ while True:
             shutil.copy2(src_file, dest_folder)
             print("\033[1;92mĐã sao chép thành công từ điện thoại vào Termux.\n")
             
-            if not os.path.exists(os.path.join(dest_folder, 'dist/mad.jar')):
+            if not os.path.exists(os.path.join(dest_folder, 'dist/nro.jar')):
                 with zipfile.ZipFile(os.path.join(dest_folder, 'mad3.zip'), 'r') as zip_ref:
                     zip_ref.extractall(dest_folder)
                     print("\033[1;92mĐã giải nén tệp.\n")
