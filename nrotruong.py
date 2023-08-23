@@ -21,9 +21,10 @@ while True:
     print("╚═╝░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░")
     
     print("\033[1;96m[1] Kiểm tra và cài đặt OpenJDK 17")
-    print("\033[1;932m[2] Sao chép và giải nén tệp từ điện thoại vào Termux, sau đó xóa thư mục")
+    print("\033[1;932m[2] Sao chép và giải nén tệp từ điện thoại vào Termux, sau đó xóa thư mục (nếu có lỗi)")
     print("\033[1;94m[3] Chạy server")
-    print("\033[1;91m[4] Thoát")
+    print("\033[1;91m[4] Xóa toàn bộ thư mục đã tạo trong Termux")
+    print("\033[1;93m[5] Thoát")
     
     luachon = input("\033[1;92mLựa chọn: ")
     
@@ -62,33 +63,55 @@ while True:
                     print("\033[1;92mĐã xóa tệp sau khi giải nén.\n")
                 else:
                     print("\033[1;91mThư mục đã giải nén tồn tại.\n")
-            
             else:
                 print("\033[1;91mTệp từ điện thoại không tồn tại.\n")
         
         except Exception as e:
             print("\033[1;91mĐã xảy ra lỗi: {}\n".format(e))
+            print("\033[1;91mĐang thực hiện xóa toàn bộ thư mục đã tạo trong Termux...\n")
+            shutil.rmtree(dest_folder)
+            print("\033[1;91mĐã xóa toàn bộ thư mục đã tạo trong Termux.\n")
         
         input("\033[1;92mNhấn Enter để tiếp tục...")
         continue
     elif luachon == '3':
         clear_screen()
         time.sleep(1)
-        if os.path.exists('/data/data/com.termux/files/home/nro/dist/mad.jar'):
-            print("\033[1;35mĐang khởi động máy chủ...")
-            os.system('java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/mad.jar')
-        else:
-            print("\033[1;91mThư mục 'nro' chưa được giải nén. Vui lòng thực hiện bước 2 trước.\n")
+        if os.path.exists('/data/data/com.termux/files/home/nro/dist'):
+            dist_files = os.listdir('/data/data/com.termux/files/home/nro/dist')
+            if dist_files:
+                print("\033[1;96mCác tệp .jar hiện có trong thư mục 'dist':")
+                for index, file in enumerate(dist_files, start=1):
+                    if file.endswith('.jar'):
+                        print(f"{index}. {file}")
+                                selected_index = int(input("\033[1;92mNhập số tương ứng với tệp .jar để chạy: ")) - 1
+                if 0 <= selected_index < len(dist_files) and dist_files[selected_index].endswith('.jar'):
+                    selected_jar_file = dist_files[selected_index]
+                    print("\033[1;35mĐang khởi động máy chủ...")
+                    os.system(f'java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/{selected_jar_file}')
+                else:
+                    print("\033[1;91mLựa chọn không hợp lệ.\n")
+            else:
+                print("\033[1;91mThư mục 'dist' không có tệp .jar.\n")
         
         input("\033[1;92mNhấn Enter để tiếp tục...")
-        break
+        continue
     elif luachon == '4':
+        clear_screen()
+        time.sleep(1)
+        print("\033[1;91mĐang thực hiện xóa toàn bộ thư mục đã tạo trong Termux...\n")
+        shutil.rmtree(dest_folder)
+        print("\033[1;91mĐã xóa toàn bộ thư mục đã tạo trong Termux.\n")
+        
+        input("\033[1;92mNhấn Enter để tiếp tục...")
+        continue
+    elif luachon == '5':
         clear_screen()
         print("\033[1;91mĐã thoát chương trình.")
         break
     else:
         clear_screen()
         print("\033[1;91mLựa chọn không hợp lệ. Vui lòng chọn lại.")
-        print("\033[1;93m-------------------------------------------------------------")
-        input("\033[1;92mNhấn Enter để tiếp tục...")
-        continue
+        print("\033[1;93m")
+        input("Nhấn Enter để tiếp tục...")
+        continue 
