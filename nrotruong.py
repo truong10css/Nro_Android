@@ -46,7 +46,7 @@ while True:
         time.sleep(1)
         file_name = input("\033[1;92mNhập tên tệp từ điện thoại (ví dụ: mad3.zip): ")
         src_file = os.path.join('/sdcard/Download', file_name)
-        dest_folder = '/data/data/com.termux/files/home/nro'
+        dest_folder = '/data/data/com.termux/files/home'
         
         try:
             if os.path.exists(src_file):
@@ -77,8 +77,8 @@ while True:
     elif luachon == '3':
         clear_screen()
         time.sleep(1)
-        if os.path.exists('/data/data/com.termux/files/home/nro/dist'):
-            dist_files = os.listdir('/data/data/com.termux/files/home/nro/dist')
+        if os.path.exists('/data/data/com.termux/files/home/dist'):
+            dist_files = os.listdir('/data/data/com.termux/files/home/dist')
             if dist_files:
                 print("\033[1;96mCác tệp .jar hiện có trong thư mục 'dist':")
                 for index, file in enumerate(dist_files, start=1):
@@ -88,7 +88,7 @@ while True:
                 if 0 <= selected_index < len(dist_files) and dist_files[selected_index].endswith('.jar'):
                     selected_jar_file = dist_files[selected_index]
                     print("\033[1;35mĐang khởi động máy chủ...")
-                    os.system(f'java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/{selected_jar_file}')
+                    os.system(f'java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/dist/{selected_jar_file}')
                 else:
                     print("\033[1;91mLựa chọn không hợp lệ.\n")
             else:
