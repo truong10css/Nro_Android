@@ -77,22 +77,24 @@ while True:
     elif luachon == '3':
         clear_screen()
         time.sleep(1)
-        if os.path.exists('/data/data/com.termux/files/home/nro/dist'):
+ if os.path.exists('/data/data/com.termux/files/home/nro/dist'):
     dist_files = os.listdir('/data/data/com.termux/files/home/nro/dist')
     if dist_files:
         print("\033[1;96mCác tệp .jar hiện có trong thư mục 'dist':")
         for index, file in enumerate(dist_files, start=1):
-    if file.endswith('.jar'):
-        print(f"{index}. {file}")
+            if file.endswith('.jar'):
+                print(f"{index}. {file}")
         selected_index = int(input("\033[1;92mNhập số tương ứng với tệp .jar để chạy: ")) - 1
         if 0 <= selected_index < len(dist_files) and dist_files[selected_index].endswith('.jar'):
-     selected_jar_file = dist_files[selected_index]
-      print("\033[1;35mĐang khởi động máy chủ...")
-    os.system(f'java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/{selected_jar_file}')
+            selected_jar_file = dist_files[selected_index]
+            print("\033[1;35mĐang khởi động máy chủ...")
+            os.system(f'java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/{selected_jar_file}')
+        else:
+            print("\033[1;91mLựa chọn không hợp lệ.\n")
+    else:
+        print("\033[1;91mThư mục 'dist' không có tệp .jar.\n")
 else:
-    print("\033[1;91mLựa chọn không hợp lệ.\n")
-else:
-    print("\033[1;91mThư mục 'dist' không có tệp .jar.\n")
+    print("\033[1;91mThư mục 'dist' không tồn tại.\n")
 
 input("\033[1;92mNhấn Enter để tiếp tục...")
 continue
