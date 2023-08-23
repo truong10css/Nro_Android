@@ -53,7 +53,7 @@ while True:
                 shutil.copy2(src_file, os.path.join(dest_folder, file_name))
                 print("\033[1;92mĐã sao chép thành công từ điện thoại vào Termux.\n")
                 
-                if not os.path.exists(os.path.join(dest_folder, 'dist/nro.jar')):
+                if not os.path.exists(os.path.join(dest_folder, 'dist/mad.jar')):
                     with zipfile.ZipFile(os.path.join(dest_folder, file_name), 'r') as zip_ref:
                         zip_ref.extractall(dest_folder)
                         print("\033[1;92mĐã giải nén tệp.\n")
@@ -74,9 +74,9 @@ while True:
     elif luachon == '3':
         clear_screen()
         time.sleep(1)
-        if os.path.exists('/data/data/com.termux/files/home/nro/dist/nro.jar'):
+        if os.path.exists('/data/data/com.termux/files/home/nro/dist/mad.jar'):
             print("\033[1;35mĐang khởi động máy chủ...")
-            os.system('java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/nro.jar')
+            os.system('java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/nro/dist/mad.jar')
         else:
             print("\033[1;91mThư mục 'nro' chưa được giải nén. Vui lòng thực hiện bước 2 trước.\n")
         
