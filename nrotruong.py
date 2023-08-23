@@ -88,7 +88,7 @@ while True:
                 if 0 <= selected_index < len(dist_files) and dist_files[selected_index].endswith('.jar'):
                     selected_jar_file = dist_files[selected_index]
                     print("\033[1;35mĐang khởi động máy chủ...")
-                    os.system(f'java -Xms2G -Xmx2G -jar /data/data/com.termux/files/home/dist/{selected_jar_file}')
+                    os.system(f'java -Xms2G -Xmx2G -jar dist/{selected_jar_file}')
                 else:
                     print("\033[1;91mLựa chọn không hợp lệ.\n")
             else:
