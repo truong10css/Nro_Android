@@ -1,12 +1,11 @@
+import base64
 import os
-import shutil
+import time
 
-def run_ngrok(port, ngrok_auth_token):
-    os.system(f'ngrok tcp {port} -authtoken {ngrok_auth_token}')
+print(base64.b64decode('LS0tLS1Ub29sIEVuY29kZSBCeSBNWFQtLS0tLQ==').decode())
+time.sleep(2)
 
 while True:
-    os.system('clear')
-
     print("\033[1;92m")
     print("███╗░░░███╗░██████╗░████████╗")
     print("████╗░████║██╔═══██╗╚══██╔══╝")
@@ -14,38 +13,25 @@ while True:
     print("██║╚██╔╝██║╚██████╔╝░░░██║░░░")
     print("██║░╚═╝░██║░╚═██╔═╝░░░░██║░░░")
     print("╚═╝░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░")
-    print("\033[1;96m[1] Cài đặt JDK 17")
-    print("\033[1;932m[2] Giải nén tệp từ đường dẫn /sdcard/Download/nro1.zip")
-    print("\033[1;92m[3] Chạy server")
-    print("\033[1;92m[4] Online")
-    print("\033[1;92m[5] Thoát")
-    print("\033[1;92mLua chon: \033[1;33m")
-
-    luachon = input().strip()
-
-    if luachon == "1":
-        os.system('pkg install openjdk-17 -y -y')
+    
+    print("\033[1;96m[1] Thiết lập")
+    print("\033[1;932m[2] Chạy máy chủ")
+    luachon = input("\033[1;92mLựa chọn: ")
+    
+    if luachon == '1':
+        time.sleep(1)
+        os.system('pkg install openjdk-17 -y -y && wget -O src.zip  https://github.com/KhanhNguyen9872/Nro-Offline_src/blob/main/src.zip?raw=true && unzip src.zip && clear ')
+        os.system('rm -rf src.zip')
         os.system('clear')
-    elif luachon == "2":
-        src_zip_path = '/sdcard/Download/nro.zip'
-        unzip_dir = '/data/data/com.termux/files/home/nro_folder/'
-        
-        if os.path.exists(unzip_dir):
-            print("Đã tồn tại folder rồi!")
-        else:
-            os.makedirs(unzip_dir, exist_ok=True)
-            shutil.copy(src_zip_path, unzip_dir)
-            os.chdir(unzip_dir)
-            os.system('unzip nro1.zip && clear')
-            os.system('clear')
-    elif luachon == "3":
-            os.system('java -Xms2G  -Xmx2G -jar /data/data/com.termux/files/home/nro_dolder/BARCOLL_NROKING/dist/Heroes_Z.jar')
-    elif luachon == "4":
-        ngrok_auth_token = input("Nhập token ngrok của bạn: ").strip()
-        port = input("Nhập port game: ").strip()
-        run_ngrok(port, ngrok_auth_token)
-    elif luachon == "5":  
+        time.sleep(1)
+        continue
+    elif luachon == '2':
+        time.sleep(1)
+        print("\033[1;35mĐang khởi động máy chủ...")
+        os.system('java -Xms2G  -Xmx2G -jar dist/mad.jar')
         break
     else:
-        print("\033[1;91mChon Sai Vui Lòng Chọn Lại")
+        print("\033[1;91mLựa chọn không hợp lệ. Vui lòng chọn lại.")
         print("\033[1;93m-------------------------------------------------------------")
+        time.sleep(1)
+        continue
