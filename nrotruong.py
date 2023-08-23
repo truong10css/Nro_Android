@@ -4,27 +4,27 @@ import shutil
 import time
 import zipfile
 
-def clear_screen():
-    os.system('clear')
+                 def clear_screen():
+                 os.system('clear')
 
-print("\033[1;91m HI!IAM QUANG TRUONG.")
-time.sleep(2)
+                 print("\033[1;91m HI!IAM QUANG TRUONG.")
+                 time.sleep(2)
 while True:
-    clear_screen()
-    print("\033[1;92m")
-    print("███╗░░░███╗░██████╗░████████╗")
-    print("████╗░████║██╔═══██╗╚══██╔══╝")
-    print("██║╚██╔╝██║╚██████╔╝░░░██║░░░")
-    print("██║░╚═╝░██║░╚═██╔═╝░░░░██║░░░")
-    print("╚═╝░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░")
+                 clear_screen()
+                 print("\033[1;92m")
+                 print("███╗░░░███╗░██████╗░████████╗")
+                 print("████╗░████║██╔═══██╗╚══██╔══╝")
+                 print("██║╚██╔╝██║╚██████╔╝░░░██║░░░")
+                 print("██║░╚═╝░██║░╚═██╔═╝░░░░██║░░░")
+                 print("╚═╝░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░")
     
-    print("\033[1;96m[1] Kiểm tra và cài đặt OpenJDK 17")
-    print("\033[1;932m[2] Sao chép và giải nén tệp từ điện thoại vào Termux, sau đó xóa thư mục (nếu có lỗi)")
-    print("\033[1;94m[3] Chạy server")
-    print("\033[1;91m[4] Xóa toàn bộ thư mục đã tạo trong Termux")
-    print("\033[1;93m[5] Thoát")
+                 print("\033[1;96m[1] Kiểm tra và cài đặt OpenJDK 17")
+                 print("\033[1;932m[2] Sao chép và giải nén tệp từ điện thoại vào Termux, sau đó xóa thư mục (nếu có lỗi)")
+                 print("\033[1;94m[3] Chạy server")
+                 print("\033[1;91m[4] Xóa toàn bộ thư mục đã tạo trong Termux")
+                 print("\033[1;93m[5] Thoát")
      
-    luachon = input("\033[1;92mLựa chọn: ")
+                 luachon = input("\033[1;92mLựa chọn: ")
     
 if luachon == '1':
                  clear_screen()
