@@ -3,9 +3,9 @@ import os
 import shutil
 import time
 import zipfile
-
-                 def clear_screen():
-                 os.system('clear')
+  
+def clear_screen():
+os.system('clear')
 
                  print("\033[1;91m HI!IAM QUANG TRUONG.")
                  time.sleep(2)
