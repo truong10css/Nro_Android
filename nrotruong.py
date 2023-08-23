@@ -15,33 +15,53 @@ while True:
     print("██║░╚═╝░██║░╚═██╔═╝░░░░██║░░░")
     print("╚═╝░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░")
     
-    print("\033[1;96m[1] Cài đặt OpenJDK 17")
+    print("\033[1;96m[1] Kiểm tra và cài đặt OpenJDK 17")
     print("\033[1;932m[2] Sao chép tệp từ điện thoại và tạo thư mục 'nro'")
-    print("\033[1;91m[3] Thoát")
+    print("\033[1;94m[3] Chạy server")
+    print("\033[1;91m[4] Thoát")
     
     luachon = input("\033[1;92mLựa chọn: ")
     
     if luachon == '1':
         time.sleep(1)
-        os.system('pkg install openjdk-17 -y -y')
-        time.sleep(1)
-        os.system('clear')
-        print("\033[1;92mCài đặt OpenJDK 17 thành công.\n")
+        # Kiểm tra cài đặt OpenJDK 17
+        result = os.system('java -version 2>&1 | grep "openjdk version" | grep "17"')
+        if result == 0:
+            print("\033[1;92mOpenJDK 17 đã được cài đặt.\n")
+        else:
+            os.system('pkg install openjdk-17 -y -y')
+            print("\033[1;92mCài đặt OpenJDK 17 thành công.\n")
+        
         continue
     elif luachon == '2':
         time.sleep(1)
-        src_file = 'sdcard/Download/mad3.zip'
-        dest_folder = '/data/data/com.termux/files/home/nro'
+        src_zip_path = '/sdcard/Download/nro.zip'
+        unzip_dir = '/data/data/com.termux/files/home/nro_folder/'
         
-        try:
-            os.makedirs(dest_folder, exist_ok=True)
-            shutil.copy2(src_file, dest_folder)
+        if os.path.exists(unzip_dir):
+            print("Đã tồn tại folder rồi!")
+        else:
+            os.makedirs(unzip_dir, exist_ok=True)
+            shutil.copy(src_zip_path, unzip_dir)
+            os.chdir(unzip_dir)
+            os.system('unzip mad3.zip && clear')
+            os.system('clear')
             print("\033[1;92mĐã sao chép thành công từ điện thoại và tạo thư mục 'nro'.\n")
         except Exception as e:
             print("\033[1;91mĐã xảy ra lỗi: {}\n".format(e))
         
         continue
     elif luachon == '3':
+        time.sleep(1)
+        # Kiểm tra thư mục đã giải nén
+        if os.path.exists('/data/data/com.termux/files/home/nro/dist/mad.jar'):
+            print("\033[1;35mĐang khởi động máy chủ...")
+            os.system('java -jar /data/data/com.termux/files/home/nro/dist/mad.jar')
+        else:
+            print("\033[1;91mThư mục 'nro' chưa được giải nén. Vui lòng thực hiện bước 2 trước.\n")
+        
+        break
+    elif luachon == '4':
         print("\033[1;91mĐã thoát chương trình.")
         break
     else:
