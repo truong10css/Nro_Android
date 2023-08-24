@@ -41,9 +41,7 @@ def run_online_server():
             auth_file.write(auth_token)
 
     start_ngrok_tcp(auth_token)
-
-run_online_server()
-
+    run_online_server()
     input("\033[1;92mNhấn Enter để tiếp tục...")
 
 def setup_jdk_and_copy_extract():
