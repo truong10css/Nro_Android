@@ -52,10 +52,10 @@ git clone https://github.com/truong10css/Nro_Android && cd Nro_Android && rm -rf
 ## **MỞ MENU**
 - [LẤY KEY](https://web1s.io/XYFEEYlNdu)
   ```
-  cd NRO_FREE
+  cd Nro_Android
   ```
   ```
-  python mainMenu.py
+  python nro.py
   ```
 # **LƯU Ý**
 * **DB1.SQL - mad - PB1**
