@@ -38,14 +38,14 @@ def run_online_server():
     time.sleep(2)
     
     auth_token = get_ngrok_auth_token()
-    if auth_token is None:
-        print("\033[1;91mKhông tìm thấy mã xác thực ngrok trong tệp cấu hình.")
-        return
-    
+if auth_token is None:
+    print("\033[1;91mKhông tìm thấy mã xác thực ngrok trong tệp cấu hình.")
+else:
+    print("\033[1;91mĐang chạy port")
     start_ngrok_tcp(auth_token)
     print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
     input("\033[1;92mNhấn Enter để tiếp tục...")
-    
+
 def setup_jdk_and_copy_extract():
     print("\033[1;92mĐang kiểm tra và cài đặt OpenJDK 17...")
     result = os.system('java -version 2>&1 | grep "openjdk version" | grep "17"')
