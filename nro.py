@@ -8,9 +8,16 @@ def clear_screen():
     os.system('clear')
 
 def install_ngrok():
-    os.system('wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip')
-    os.system('unzip ngrok.zip')
-    os.system('rm -rf ngrok.zip')
+    if os.path.exists('ngrok.zip'):
+        print("\033[1;91mTệp ngrok.zip đã tồn tại. Bắt đầu giải nén...\n")
+        with zipfile.ZipFile('ngrok.zip', 'r') as zip_ref:
+            zip_ref.extractall('.')
+        os.remove('ngrok.zip')
+    else:
+        os.system('wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip')
+        os.system('unzip ngrok.zip')
+        os.system('rm -rf ngrok.zip')
+        print("\033[1;92mĐã tải xuống tệp ngrok.zip thành công.\n")
 def get_ngrok_auth_token():
     config_path = '/data/data/com.termux/files/home/.ngrok2/ngrok.yml'
     with open(config_path, 'r') as config_file:
