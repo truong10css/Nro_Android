@@ -8,8 +8,8 @@ def clear_screen():
     os.system('clear')
 
 def install_ngrok():
-    os.system('wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm-asia.zip
-    os.system('unzip ngrok-stable-linux-arm-asia.zip')
+    os.system('"wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip"')
+    os.system('unzip ngrok-stable-linux-arm.zip')
 
 def start_ngrok_tcp(auth_token):
     os.system('./ngrok authtoken {}'.format(auth_token))
