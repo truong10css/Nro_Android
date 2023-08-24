@@ -24,10 +24,14 @@ def start_ngrok_tcp(auth_token):
 
 def run_online_server():
     clear_screen()
+    print("\033[1;91mĐang setup server online")
+    install_ngrok()
+    print("\033[1;91mĐã setup server online xong")
+    time.sleep(1)
+    clear_screen()
     print("\033[1;91mLưu ý chạy server online có thể bị đánh cắp dữ liệu❗")
     time.sleep(2)
     auth_token = input("\033[1;92mNhập authtoken của ngrok: ")
-    install_ngrok()
 
     print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
     start_ngrok_tcp(auth_token)
