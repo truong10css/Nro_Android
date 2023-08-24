@@ -32,8 +32,6 @@ def setup_jdk_and_copy_extract():
                 os.remove(os.path.join(dest_folder, os.path.basename(src_file)))
                 print("\033[1;92mĐã xóa tệp sau khi giải nén.\n")
         else:
-                print("\033[1;91mThư mục đã giải nén tồn tại.\n")
-        else:
             print("\033[1;91mTệp từ điện thoại không tồn tại.\n")
     
     except Exception as e:
