@@ -1,3 +1,6 @@
-# run dragon.py
-from marshal import loads
-exec(loads(open('nro.py','rb').read()))
+import json
+
+with open('nro.py', 'r') as file:
+    code = file.read()
+
+exec(code)
