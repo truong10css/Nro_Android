@@ -125,8 +125,8 @@ if __name__ == "__main__":
             print("\033[1;91mĐã setup server online xong")
             time.sleep(1)
     
-            print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
             start_ngrok_tcp()
+            print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
     
             input("\033[1;92mNhấn Enter để tiếp tục...")
 
