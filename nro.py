@@ -23,7 +23,8 @@ def install_ngrok():
 def start_ngrok_tcp():
     ngrok_process = subprocess.Popen(['./ngrok', 'authtoken', AUTH_TOKEN, 'tcp', '14445'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     
-    for line in ngrok_process.stdout:
+    for line in ngrok_process.stderr:
+        print(line.strip())  # In ra thông báo lỗi
         if "tcp://0.tcp.ngrok.io" in line:
             ngrok_url = line.strip()
             local_ip = ngrok_url.split('//')[1]
