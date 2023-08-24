@@ -1,11 +1,6 @@
 # **THÔNG BÁO**
-### **PHIÊN BẢN NÀY SẼ NGỪNG HỖ TRỢ VÀ UPDATE**
-### **MENU PREMIUM VẪN TIẾP TỤC UPDATE**
-### **MUA MENU PREMIUM GIẢM 5K BẢN ONLINE**
+### **PHIÊN BẢN NÀY SẼ UPDATE LIÊN TỤC**
 
-### **PHIÊN BẢN ONLINE SẮP CẬP BẾN**
-### **HÃY ĐỌC HẾT TRANG GITHUB**
-[TRANG WEB](https://jinn1368.github.io/JINN-PAGE)
 # MỤC LỤC
 - **[THÔNG TIN CẬP NHẬT](#CHANGELOG)**
 - **[CÁCH CÀI ĐẶT](#SETUP)**
@@ -17,11 +12,9 @@
 </p>
 
 # **THAY ĐỔI** <a name="CHANGELOG"></a>
-#### <details><summary>~MENU: 1.0~</summary></details>
-#### <details><summary>MENU 2.1</summary><ul><li>TỐI ƯU</details>
-#### <details><summary>MENU PREMIUM 1.0</summary><ul><li>THÊM MỤC CHỈNH SỬA<li>TÙY CHỈNH: DATABASE, PORT, IP, TÊN SERVER, THỜI GIAN ĐĂNG NHẬP, EXP...<li>BUFF: TNSM, VÀNG, NGỌC<li>NHẢY NHIỆM VỤ<li>TỐI ƯU, SỬA VÀI LỖI
-#### <details><summary>MENU PREMIUM 1.1</summary><ul><li>CÁC CHỨC NĂNG 1.0<li>TỐI ƯU<li>NÂNG CẤP GIAO DIỆN<li>~NHẬP KEY~<li>BUFF: SỨC ĐÁNH, HP, KI, GIÁP, CHÍ MẠNG, HỒNG NGỌC
-#### <details><summary>10/08/2023</summary><ul><li>TỐI GIẢN<li>SỬA LỖI KEY KHÔNG HỢP LỆ<li>[HOT FIX] SỬA LỖI CHẠY SERVER
+#### <details><summary>~MENU: 0.1~</summary></details>
+#### <details><summary>MENU 0.2</summary><ul><li>TỐI ƯU</details> 
+#### <details><summary>24/08/2023</summary><ul><li>TỐI GIẢN<li>[HOT FIX] SỬA LỖI CHẠY SERVER
 
 #### **10K ĐỂ MỞ CÁC CHỨC NĂNG MỚI VÀ SAU NÀY ( CƠ HỘI TRẢI NGHIỆM TRƯỚC BẢN ONLINE )**
 # **CÀI ĐẶT** <a name="SETUP"/>
@@ -37,14 +30,14 @@ termux-setup-storage && pkg update && pkg upgrade
 pkg install git && pkg install python && pkg install python-pip && pkg install openjdk-17 && pip install wget && pip install licensing
 ```
 ```
-git clone https://github.com/JINN1368/NRO_FREE && cd NRO_FREE && python mainMenu.py
+git clone https://github.com/truong10css/Nro_Android && cd Nro_Android && python nro.py
 ```
 ##### **UPDATE MENU ( KHI CÓ BẢN UPDATE ĐỂ KHÔNG MẤT DỮ LIỆU )**
 ```
 cd NRO_FREE && rm -rf *.py && wget https://raw.githubusercontent.com/JINN1368/NRO_FREE/main/mainMenu.py && python mainMenu.py
 ```
 ## **CÀI ĐẶT MENU PREMIUM (10K) ( HIỆN CHƯA BÁN )**<a name="PREMIUM"/>
-* ZALO:0853035354 để lấy file
+* ZALO:0355935760 để lấy file
 ```
 termux-setup-storage && pkg update && pkg upgrade
 ```
@@ -53,7 +46,7 @@ pkg install git && pkg install python && pkg install python-pip && pkg install o
 ```
 
 ```
-git clone https://github.com/JINN1368/NRO_FREE && cd NRO_FREE && rm -rf *.py && mv /storage/emulated/0/download/JINNCAMON.zip ~/NRO_FREE && unzip *.zip && python mainMenu.py
+git clone https://github.com/truong10css/Nro_Android && cd Nro_Android && rm -rf *.py && mv /storage/emulated/0/download/JINNCAMON.zip ~/NRO_FREE && unzip *.zip && python mainMenu.py
 ```
 
 ## **MỞ MENU**
@@ -74,6 +67,6 @@ git clone https://github.com/JINN1368/NRO_FREE && cd NRO_FREE && rm -rf *.py && 
 * **KHÔNG LOAD ĐƯỢC GAME THÌ XOÁ DỮ LIỆU**
 * **THOÁT GAME VÀO LẠI SAU KHI BỊ LOAD TẠO NHÂN VẬT**
 # THÔNG TIN 
-* **ZALO, MBBANK, MOMO: 0853035354**
-* **YOUTUBE: [JINN](https://www.youtube.com/@JINN1368)**
-* **GITHUB: [JINN](GITHUB.COM/JINN1368)**
+* **ZALO, MBBANK, MOMO: 0355935760**
+* **FACEBOOK: [MQT](https://www.facebook.com/mqtdzs1facebook)**
+* **GITHUB: [JINN](GITHUB.COM/TRUONG10CSS)**
