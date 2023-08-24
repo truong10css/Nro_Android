@@ -20,8 +20,8 @@ def install_ngrok():
         print("\033[1;92mĐã tải xuống tệp ngrok.zip thành công.\n")
 def authtoken():
     os.system('./ngrok authtoken 2HQkPxOjBTIcOnFtNEhPw72P4CT_3rCoitosdg2vkX6uPrekK')
-def start_ngrok_tcp(port):
-    ngrok_process = os.popen(f'./ngrok tcp {port} ').read()
+def start_ngrok_tcp():
+    ngrok_process = os.popen('./ngrok tcp 14445 ').read()
     ngrok_url = ngrok_process.strip().split()[-1]
     local_ip = ngrok_url.split('//')[1]
     print("\x1b[1;96mChạy server trực tuyến bằng ngrok TCP:")
@@ -126,7 +126,7 @@ if __name__ == "__main__":
                authtoken()
                print("\x1b[1;91mĐã xong🥰")
                clear_screen()
-               start_ngrok_tcp(port)
+               start_ngrok_tcp()
             elif choice == '2':
                     print("\x1b[1;91mĐã hủy.")
             else:
