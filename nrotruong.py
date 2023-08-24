@@ -2,9 +2,37 @@ import os
 import shutil
 import time
 import zipfile
+import subprocess
 
 def clear_screen():
     os.system('clear')
+
+def install_ngrok():
+    os.system('wget -O ngrok.zip https://bin.equinox.io/a/nmkK3DkqZEB/ngrok-2.2.8-linux-arm64.zip')
+    os.system('unzip ngrok.zip')
+
+def start_ngrok_tcp(auth_token):
+    os.system('./ngrok authtoken {}'.format(auth_token))
+    ngrok_process = subprocess.Popen(['./ngrok', 'tcp', '14445'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    
+    for line in ngrok_process.stderr:
+        if "tcp://0.tcp.ngrok.io" in line:
+            ngrok_url = line.strip()
+            local_ip = ngrok_url.split('//')[1]
+            print("\033[1;92mĐịa chỉ IP từ ngrok: {}\n".format(local_ip))
+            break
+
+def run_online_server():
+    clear_screen()
+    print("\033[1;91mLưu ý chạy server online có thể bị đánh cắp dữ liệu❗")
+    time.sleep(2)
+    auth_token = input("\033[1;92mNhập authtoken của ngrok: ")
+    install_ngrok()
+
+    print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
+    start_ngrok_tcp(auth_token)
+    
+    input("\033[1;92mNhấn Enter để tiếp tục...")
 
 def setup_jdk_and_copy_extract():
     print("\033[1;92mĐang kiểm tra và cài đặt OpenJDK 17...")
@@ -61,7 +89,8 @@ if __name__ == "__main__":
         
         print("\033[1;96m[1] Kiểm tra, cài đặt OpenJDK 17 và sao chép giải nén tệp từ điện thoại")
         print("\033[1;94m[2] Chạy server")
-        print("\033[1;91m[3] Thoát")
+        print("\033[1:94m[3] Online (Beta)")
+        print("\033[1;91m[4] Thoát")
         
         luachon = input("\033[1;92mLựa chọn: ")
         
@@ -93,7 +122,11 @@ if __name__ == "__main__":
                 print("\033[1;91mThư mục 'dist' không tồn tại.\n")
             
             input("\033[1;92mNhấn Enter để tiếp tục...")
-        elif luachon == '3':
+        if luachon == '3':
+             clear_screen()
+             run_online_server()
+             continue
+        elif luachon == '4':
             clear_screen()
             print("\033[1;91mĐã thoát chương trình.")
             break
