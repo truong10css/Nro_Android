@@ -21,8 +21,8 @@ def install_ngrok():
 def authtoken():
     os.system('./ngrok authtoken 2HQkPxOjBTIcOnFtNEhPw72P4CT_3rCoitosdg2vkX6uPrekK')
 def get_ngrok_ip():
-    ngrok_process = subprocess.run('./ngrok tcp 14445 ', shell=True, text=True, capture_output=True)
-    ngrok_output = ngrok_process.stdout
+    ngrok_process = subprocess.Popen('./ngrok tcp 14445 ', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    ngrok_output, _ = ngrok_process.communicate()
     ngrok_url = ngrok_output.strip().split()[-1]
     local_ip = ngrok_url.split('//')[1]
     return local_ip
