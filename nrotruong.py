@@ -84,7 +84,7 @@ if __name__ == "__main__":
                     for index, file in enumerate(dist_files, start=1):
                         if file.endswith('.jar'):
                             print(f"{index}. {file}")
-                  selected_index = int(input("\033[1;92mNhập số tương ứng với tệp .jar để chạy: ")) - 1
+                    selected_index = int(input("\033[1;92mNhập số tương ứng với tệp .jar để chạy: ")) - 1
                     if 0 <= selected_index < len(dist_files) and dist_files[selected_index].endswith('.jar'):
                         selected_jar_file = dist_files[selected_index]
                         print("\033[1;35mĐang khởi động máy chủ...")
