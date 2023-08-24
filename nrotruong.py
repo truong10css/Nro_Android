@@ -32,9 +32,9 @@ def run_online_server():
     print("\033[1;91mLưu ý chạy server online có thể bị đánh cắp dữ liệu❗")
     time.sleep(2)
     auth_token = input("\033[1;92mNhập authtoken của ngrok: ")
-
-    print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
+    
     start_ngrok_tcp(auth_token)
+    print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
     
     input("\033[1;92mNhấn Enter để tiếp tục...")
 
@@ -91,7 +91,7 @@ if __name__ == "__main__":
         print("██║░╚═╝░██║░╚═██╔═╝░░░░██║░░░")
         print("╚═╝░░░░░╚═╝░░░╚═╝░░░░░░╚═╝░░░")
         
-        print("\033[1;96m[1] Kiểm tra, cài đặt OpenJDK 17 và sao chép giải nén tệp từ điện thoại")
+        print("\033[1;96m[1] Setup")
         print("\033[1;94m[2] Chạy server")
         print("\033[1;94m[3] Online (Beta)")
         print("\033[1;91m[4] Thoát")
