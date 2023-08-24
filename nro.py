@@ -11,8 +11,14 @@ def install_ngrok():
     os.system('wget -O ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip')
     os.system('unzip ngrok.zip')
     os.system('rm -rf ngrok.zip')
+def get_ngrok_auth_token():
+    config_path = '/data/data/com.termux/files/home/.ngrok2/ngrok.yml'
+    with open(config_path, 'r') as config_file:
+        for line in config_file:
+            if 'authtoken:' in line:
+                return line.split(': ')[1].strip()
+
 def start_ngrok_tcp(auth_token):
-    os.system('./ngrok authtoken {}'.format(auth_token))
     ngrok_process = subprocess.Popen(['./ngrok', 'tcp', '14445'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     
     for line in ngrok_process.stdout:
@@ -21,29 +27,25 @@ def start_ngrok_tcp(auth_token):
             local_ip = ngrok_url.split('//')[1]
             print("\033[1;92mĐịa chỉ IP từ ngrok: {}\n".format(local_ip))
             break
-
 def run_online_server():
     clear_screen()
-    print("\033[1;91mĐang thiết lập máy chủ trực tuyến")
+    print("\033[1;91mĐang setup server online")
     install_ngrok()
-    print("\033[1;91mHoàn tất thiết lập máy chủ trực tuyến")
+    print("\033[1;91mĐã setup server online xong")
     time.sleep(1)
     clear_screen()
-    print("\033[1;91mLưu ý: Chạy máy chủ trực tuyến có thể bị đánh cắp dữ liệu❗")
+    print("\033[1;91mLưu ý chạy server online có thể bị đánh cắp dữ liệu❗")
     time.sleep(2)
-
-    try:
-        with open('ngrok_auth_token.txt', 'r') as auth_file:
-            auth_token = auth_file.read().strip()
-    except FileNotFoundError:
-        auth_token = input("\033[1;92mNhập mã xác thực của ngrok: ")
-        with open('ngrok_auth_token.txt', 'w') as auth_file:
-            auth_file.write(auth_token)
-
+    
+    auth_token = get_ngrok_auth_token()
+    if auth_token is None:
+        print("\033[1;91mKhông tìm thấy mã xác thực ngrok trong tệp cấu hình.")
+        return
+    
     start_ngrok_tcp(auth_token)
-    run_online_server()
+    print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
     input("\033[1;92mNhấn Enter để tiếp tục...")
-
+    
 def setup_jdk_and_copy_extract():
     print("\033[1;92mĐang kiểm tra và cài đặt OpenJDK 17...")
     result = os.system('java -version 2>&1 | grep "openjdk version" | grep "17"')
