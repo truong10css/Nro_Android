@@ -126,9 +126,9 @@ if __name__ == "__main__":
                print("\x1b[1;91mĐã xong🥰")
                clear_screen()
                start_ngrok_tcp(auth_token, port)
-               elif choice == '2':
+            elif choice == '2':
                     print("\x1b[1;91mĐã hủy.")
-               else:
+            else:
                     print("\x1b[1;91mLựa chọn không hợp lệ.")
         elif luachon == '4':
             clear_screen()
