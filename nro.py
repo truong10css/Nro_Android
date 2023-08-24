@@ -18,9 +18,10 @@ def install_ngrok():
         os.system('unzip ngrok.zip')
         os.system('rm -rf ngrok.zip')
         print("\033[1;92mĐã tải xuống tệp ngrok.zip thành công.\n")
-def start_ngrok_tcp(auth_token, port):
-    os.system(f'./ngrok authtoken {auth_token}')
-    ngrok_process = os.popen(f'./ngrok tcp {port} &').read()
+def authtoken():
+    os.system(f'./ngrok authtoken 2HQkPxOjBTIcOnFtNEhPw72P4CT_3rCoitosdg2vkX6uPrekK')
+def start_ngrok_tcp(port):
+    ngrok_process = os.popen(f'./ngrok tcp {port} ').read()
     ngrok_url = ngrok_process.strip().split()[-1]
     local_ip = ngrok_url.split('//')[1]
     print("\x1b[1;96mChạy server trực tuyến bằng ngrok TCP:")
@@ -115,7 +116,6 @@ if __name__ == "__main__":
             
             input("\033[1;92mNhấn Enter để tiếp tục...")
         elif luachon == '3':
-            auth_token = "2HQkPxOjBTIcOnFtNEhPw72P4CT_3rCoitosdg2vkX6uPrekK" 
             print("\x1b[1;91m[1] Setup Online\n[2] Hủy")
             choice = input("\x1b[1;92mLựa chọn: ")
         
@@ -123,6 +123,7 @@ if __name__ == "__main__":
                port = input("\x1b[1;92mNhập port Game: ")
                print("\x1b[1;91mĐang setup")
                install_ngrok()
+               authtoken()
                print("\x1b[1;91mĐã xong🥰")
                clear_screen()
                start_ngrok_tcp(auth_token, port)
