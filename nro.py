@@ -117,7 +117,7 @@ if __name__ == "__main__":
         elif luachon == '3':
             auth_token = "2HQkPxOjBTIcOnFtNEhPw72P4CT_3rCoitosdg2vkX6uPrekK" 
             print("\x1b[1;91m[1] Setup Online\n[2] Hủy")
-            setup_choice = input("\x1b[1;92mLựa chọn: ")
+            choice = input("\x1b[1;92mLựa chọn: ")
         
             if choice == '1':
                port = input("\x1b[1;92mNhập port Game: ")
