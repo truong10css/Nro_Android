@@ -115,12 +115,12 @@ if __name__ == "__main__":
             
             input("\033[1;92mNhấn Enter để tiếp tục...")
         elif luachon == '3':
-            port = input("\x1b[1;92mNhập port Game: ")
             auth_token = "2HQkPxOjBTIcOnFtNEhPw72P4CT_3rCoitosdg2vkX6uPrekK" 
             print("\x1b[1;91m[1] Setup Online\n[2] Hủy")
             setup_choice = input("\x1b[1;92mLựa chọn: ")
         
             if choice == '1':
+               port = input("\x1b[1;92mNhập port Game: ")
                print("\x1b[1;91mĐang setup")
                install_ngrok()
                print("\x1b[1;91mĐã xong🥰")
