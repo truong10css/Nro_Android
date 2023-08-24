@@ -25,8 +25,7 @@ def setup_jdk_and_copy_extract():
             os.makedirs(dest_folder, exist_ok=True)
             shutil.copy2(src_file, os.path.join(dest_folder, os.path.basename(src_file)))
             print("\033[1;92mĐã sao chép thành công từ điện thoại vào Termux.\n")
-       # if not os.path.exists(os.path.join(dest_folder, dist_files)):
-                with zipfile.ZipFile(os.path.join(dest_folder, os.path.basename(src_file)), 'r') as zip_ref:
+            with zipfile.ZipFile(os.path.join(dest_folder, os.path.basename(src_file)), 'r') as zip_ref:
                     zip_ref.extractall(dest_folder)
                     print("\033[1;92mĐã giải nén tệp.\n")
                 
