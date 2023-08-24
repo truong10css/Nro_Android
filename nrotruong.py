@@ -89,7 +89,7 @@ if __name__ == "__main__":
         
         print("\033[1;96m[1] Kiểm tra, cài đặt OpenJDK 17 và sao chép giải nén tệp từ điện thoại")
         print("\033[1;94m[2] Chạy server")
-        print("\033[1:94m[3] Online (Beta)")
+        print("\033[1;94m[3] Online (Beta)")
         print("\033[1;91m[4] Thoát")
         
         luachon = input("\033[1;92mLựa chọn: ")
