@@ -15,7 +15,7 @@ def start_ngrok_tcp(auth_token):
     os.system('./ngrok authtoken {}'.format(auth_token))
     ngrok_process = subprocess.Popen(['./ngrok', 'tcp', '14445'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     
-    for line in ngrok_process.stderr:
+    for line in ngrok_process.stdout:
         if "tcp://0.tcp.ngrok.io" in line:
             ngrok_url = line.strip()
             local_ip = ngrok_url.split('//')[1]
@@ -24,18 +24,26 @@ def start_ngrok_tcp(auth_token):
 
 def run_online_server():
     clear_screen()
-    print("\033[1;91mĐang setup server online")
+    print("\033[1;91mĐang thiết lập máy chủ trực tuyến")
     install_ngrok()
-    print("\033[1;91mĐã setup server online xong")
+    print("\033[1;91mHoàn tất thiết lập máy chủ trực tuyến")
     time.sleep(1)
     clear_screen()
-    print("\033[1;91mLưu ý chạy server online có thể bị đánh cắp dữ liệu❗")
+    print("\033[1;91mLưu ý: Chạy máy chủ trực tuyến có thể bị đánh cắp dữ liệu❗")
     time.sleep(2)
-    auth_token = input("\033[1;92mNhập authtoken của ngrok: ")
-    time.sleep(1)
+
+    try:
+        with open('ngrok_auth_token.txt', 'r') as auth_file:
+            auth_token = auth_file.read().strip()
+    except FileNotFoundError:
+        auth_token = input("\033[1;92mNhập mã xác thực của ngrok: ")
+        with open('ngrok_auth_token.txt', 'w') as auth_file:
+            auth_file.write(auth_token)
+
     start_ngrok_tcp(auth_token)
-    print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
-    
+
+run_online_server()
+
     input("\033[1;92mNhấn Enter để tiếp tục...")
 
 def setup_jdk_and_copy_extract():
