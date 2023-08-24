@@ -46,7 +46,7 @@ while True:
         time.sleep(1)
         file_name = input("\033[1;92mNhập tên tệp từ điện thoại (ví dụ: mad3.zip): ")
         src_file = os.path.join('/sdcard/Download', file_name)
-        dest_folder = '/data/data/com.termux/files/home'
+        dest_folder = '/data/data/com.termux/files/home/Nro_Android'
         
         try:
             if os.path.exists(src_file):
@@ -77,8 +77,8 @@ while True:
     elif luachon == '3':
         clear_screen()
         time.sleep(1)
-        if os.path.exists('/data/data/com.termux/files/home/dist'):
-            dist_files = os.listdir('/data/data/com.termux/files/home/dist')
+        if os.path.exists('/data/data/com.termux/files/home/Nro_Android/dist'):
+            dist_files = os.listdir('/data/data/com.termux/files/home/Nro_Android/dist')
             if dist_files:
                 print("\033[1;96mCác tệp .jar hiện có trong thư mục 'dist':")
                 for index, file in enumerate(dist_files, start=1):
