@@ -32,7 +32,7 @@ def run_online_server():
     print("\033[1;91mLưu ý chạy server online có thể bị đánh cắp dữ liệu❗")
     time.sleep(2)
     auth_token = input("\033[1;92mNhập authtoken của ngrok: ")
-    
+    time.sleep(1)
     start_ngrok_tcp(auth_token)
     print("\033[1;96mChạy server trực tuyến bằng ngrok TCP:\n")
     
