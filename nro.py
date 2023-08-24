@@ -20,13 +20,12 @@ def install_ngrok():
         print("\033[1;92mĐã tải xuống tệp ngrok.zip thành công.\n")
 def authtoken():
     os.system('./ngrok authtoken 2HQkPxOjBTIcOnFtNEhPw72P4CT_3rCoitosdg2vkX6uPrekK')
-def start_ngrok_tcp():
+def get_ngrok_ip():
     ngrok_process = os.popen('./ngrok tcp 14445 ').read()
     ngrok_url = ngrok_process.strip().split()[-1]
     local_ip = ngrok_url.split('//')[1]
-    print("\x1b[1;96mChạy server trực tuyến bằng ngrok TCP:")
-    print(f"Địa chỉ IP từ ngrok: {local_ip}")
-   
+    return local_ip
+    
 def setup_jdk_and_copy_extract():
     print("\033[1;92mĐang kiểm tra và cài đặt OpenJDK 17...")
     result = os.system('java -version 2>&1 | grep "openjdk version" | grep "17"')
@@ -120,13 +119,13 @@ if __name__ == "__main__":
             choice = input("\x1b[1;92mLựa chọn: ")
         
             if choice == '1':
-               port = input("\x1b[1;92mNhập port Game: ")
                print("\x1b[1;91mĐang setup")
                install_ngrok()
                authtoken()
                print("\x1b[1;91mĐã xong🥰")
                clear_screen()
-               start_ngrok_tcp()
+               ip = get_ngrok_ip()
+               print("Địa chỉ IP từ ngrok:",ip)
             elif choice == '2':
                     print("\x1b[1;91mĐã hủy.")
             else:
