@@ -120,16 +120,16 @@ if __name__ == "__main__":
             print("\x1b[1;91m[1] Setup Online\n[2] Hủy")
             setup_choice = input("\x1b[1;92mLựa chọn: ")
         
-        if choice == '1':
-            print("\x1b[1;91mĐang setup")
-            install_ngrok()
-            print("\x1b[1;91mĐã xong🥰")
-            clear_screen()
-            start_ngrok_tcp(auth_token, port)
-        elif choice == '2':
-            print("\x1b[1;91mĐã hủy.")
-        else:
-            print("\x1b[1;91mLựa chọn không hợp lệ.")
+            if choice == '1':
+               print("\x1b[1;91mĐang setup")
+               install_ngrok()
+               print("\x1b[1;91mĐã xong🥰")
+               clear_screen()
+               start_ngrok_tcp(auth_token, port)
+               elif choice == '2':
+                    print("\x1b[1;91mĐã hủy.")
+               else:
+                    print("\x1b[1;91mLựa chọn không hợp lệ.")
         elif luachon == '4':
             clear_screen()
             print("\033[1;91mĐã thoát chương trình.")
